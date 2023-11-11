@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function handledata() {
+        let data = [12, 13, 45, 56, 67];
+        let newel = document.getElementById('newel').value;
+        newel = parseInt(newel);
+        let position = document.getElementById('position').value;
+        for (var i = data.length - 1; i >= 0; i--) {
+            if (i >= position) {
+                data[i + 1] = data[i];
+                if (i == position) {
+                    data[i] = newel;
+                }
+            }
+        }
+        console.log(data);
+    }
+</script>
+
+<body>
+    <input type="text" name="" id="newel" placeholder="enter new element">
+    <input type="text" name="" id="position" placeholder="enter poasition">
+    <button type="submit" onclick="handledata()">Insert</button>
+</body>
+
+</html>
