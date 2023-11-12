@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searching Element</title>
+</head>
+<script>
+    function searchelement() {
+        let data = [11, 22, 13, 44, 55, 67, 79];
+        let item = document.getElementById("searchel").value;
+
+        let index = undefined;
+        for (i = 0; i <= data.length - 1; i++) {
+
+            if (data[i] === parseInt(item)) {
+                index = i;
+                break;
+            }
+
+        }
+        console.log(index)
+        // console.log(data.indexOf(item))
+
+    }
+
+
+</script>
+
+<body>
+    <input type="text" name="" id="searchel" placeholder="enter searchel">
+    <button type="submit" onclick="searchelement()">Search Element</button>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merging array</title>
+</head>
+
+<body>
+    <script>
+        let data = [12, 13, 14, 15];
+        let data2 = [15, 16, 17];
+        // let data3 = [];
+        // for (let i = 0; i < data.length; i++) {
+        //     data3[i] = data[i];
+        // }
+        // for (let i = 0; i < data2.length; i++) {
+        //     data3[data.length + i] = data2[i];
+        // }
+        // console.log(data3)
+        let data3 = [...data, ...data2];
+        console.log(data3)
+
+
+    </script>
+</body>
+
+</html>
