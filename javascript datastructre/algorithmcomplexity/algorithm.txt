@@ -1,0 +1,5 @@
+alogorithm  is steps to do anything
+timecomplexity is mainly calculated by counting the number of steps to finish the execution
+space complexity is the amount of space required to solve the problem 
+space complexity is the auxiliary space + input size
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
