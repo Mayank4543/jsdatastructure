@@ -1,0 +1,25 @@
+<!-- khud ko baar do rana -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion</title>
+</head>
+
+<body>
+    <h1>Recursion</h1>
+    <script>
+        function factorial(item) {
+            if (item == 0) {
+                return 1;
+            }
+            return item * factorial(item - 1);
+        }
+        let data = 5;
+        console.log(factorial(data));
+    </script>
+</body>
+
+</html>
