@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function color() {
+        //     let data = 10;
+        //     console.log(data)
+        // }
+        // function day() {
+        //     color();
+        // }
+        // function frut() {
+        //     day();
+        // }
+        // function topfunct() {
+        //     frut()
+        // }
+        // topfunct()
+        // head and tail recursion
+        function tez(x) {
+            // console.log(x)-> head recursion
+            if (x > 0) {
+                tez(x - 1);
+            }
+            // console.log(x) -> tail recursion
+        }
+        let data = 5;
+        tez(data);
+    </script>
+</body>
+
+</html>
