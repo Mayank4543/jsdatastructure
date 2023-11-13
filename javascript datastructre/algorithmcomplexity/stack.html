@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stack in javascript</title>
+</head>
+
+<body>
+    <h2>stack in javascript</h2>
+    <input type="text" name="" id="newel" placeholder="enter value">
+    <button onclick="pushStack()">Add an elemnt </button><br>
+    <button onclick="pop()">Remove an element</button><br>
+    <button onclick="display()">Display all elemnt</button>
+
+    <script>
+        let data = [];
+        let currentsize = data.length;
+        let max = 8;
+        function pushStack() {
+            let newval = document.getElementById('newel').value;
+            if (currentsize >= max) {
+                alert("stack is overflow" + newval);
+            }
+            else {
+                data[currentsize] = newval;
+                currentsize += 1;
+                document.getElementById('newel').value = '';
+            }
+
+        }
+        function pop() {
+            if (currentsize > 0) {
+                currentsize -= 1;
+                data.length = currentsize;
+
+            }
+            else {
+                alert('stack is already empty')
+            }
+        }
+        function display() {
+            for (i = 0; i <= currentsize - 1; i++) {
+                console.log("stck element no is", i, "and the value is ", data[i])
+            }
+        }
+        // pushStack(20);
+        // pushStack(30);
+        // pushStack(40);
+        // pushStack(50);
+        // pushStack(60);
+        // pushStack(70);
+        // pushStack(70);
+        // pushStack(70);
+        // pushStack(70);
+        // pop();
+        // pop()
+        // pop()
+        console.log(data)
+
+    </script>
+</body>
+
+</html>
