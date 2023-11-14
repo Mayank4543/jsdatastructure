@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stackwithclasses</title>
+</head>
+
+<body>
+    <h1>Stack With Classes</h1>
+    <script>
+        class Stack {
+            item = [];
+            currentsize;
+            maxsize;
+            constructor(size) {
+                console.log('calling constructor')
+                this.maxsize = size;
+                this.currentsize = this.item.length;
+            }
+
+            push(newvalue) {
+                if (this.currentsize >= this.maxsize) {
+                    alert("stack is overflow");
+                }
+                else {
+                    this.item[this.currentsize] = newvalue;
+                    this.currentsize++;
+                }
+            }
+            pop() {
+                let lastitem = this.item[this.currentsize - 1];
+
+
+                this.currentsize--;
+                this.item.length = this.currentsize;
+                return lastitem
+
+
+            }
+            display() {
+                console.log(this.item[this.currentsize - 1])
+
+            }
+            reverse(data) {
+                for (let i = 0; i < data.length; i++) {
+                    this.push(data[i])
+
+                }
+                for (let i = 0; i < data.length; i++) {
+                    data[i] = this.pop()
+                }
+            }
+        }
+        st1 = new Stack();
+        let st2 = "mayank";
+        st2 = st2.split("");
+        st1.push(st2)
+        st1.reverse(st2);
+
+        st1.display();
+    </script>
+</body>
+
+</html>

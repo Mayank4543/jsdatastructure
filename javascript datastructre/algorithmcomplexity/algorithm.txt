@@ -5,5 +5,5 @@ space complexity is the auxiliary space + input size
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 stack mein fixed hi rehte hain element 
 stack is linear data structure 
-it follow lifo order
-push add new element pop remove an elemnt from the stack  many more operation  is empty ,is peak 
+it follows lifo order
+push add new element pop remove an element from the stack  many more operation  is empty ,is peak 
