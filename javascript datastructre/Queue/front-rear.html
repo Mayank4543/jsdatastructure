@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front rear and isempty</title>
+</head>
+
+<body>
+    <h1>Front rear and isempty</h1>
+    <script>
+        let queue = []
+        let currentsize = queue.length;
+        let size = 5
+
+        function enquue() {
+            let newvalue = document.getElementById('el').value;
+            if (currentsize >= size) {
+                alert("Queuee is full");
+            } else {
+                queue[currentsize] = newvalue;
+                currentsize++
+            }
+
+        }
+        function display() {
+            console.log(queue)
+        }
+        function dequeue() {
+            if (!isempty()) {
+                for (let i = 0; i < queue.length; i++) {
+                    queue[i] = queue[i + 1];
+                }
+                currentsize--;
+                queue.length = currentsize;
+            }
+            else {
+                console.log("queue is already empty")
+            }
+        }
+        function front() {
+            if (!isempty()) {
+                console.log(queue[0])
+            }
+            else {
+                console.log("queue is already empty")
+            }
+        }
+        function rear() {
+            if (!isempty()) {
+                console.log(queue[currentsize - 1])
+            }
+            else {
+                console.log("queue is already empty")
+            }
+        }
+        function isempty() {
+            if (currentsize <= 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+    <input type="text" name="" id="el" placeholder="enter value">
+    <button onclick="enquue()">Add element</button>
+    <br><br>
+    <button onclick="dequeue()">Remove element</button>
+    <button onclick="display()">Display element</button>
+    <button onclick="front()">Front element</button>
+    <button onclick="rear()">Rear element</button>
+</body>
+
+</html>

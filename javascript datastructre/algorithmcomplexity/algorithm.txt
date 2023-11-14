@@ -7,3 +7,10 @@ stack mein fixed hi rehte hain element
 stack is linear data structure 
 it follows lifo order
 push add new element pop remove an element from the stack  many more operation  is empty ,is peak 
+********************************************************************************
+Queue
+it follows  fifo 
+ it is linear data structure
+ two type of Queue
+ enqueue add new element at thr end of the queue
+ dequeue remove  element
