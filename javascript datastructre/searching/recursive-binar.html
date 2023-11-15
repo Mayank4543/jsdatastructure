@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursive and binary</title>
+</head>
+
+<body>
+    <script>
+        let data = [12, 13, 14, 15, 16, 17];
+        let start = 0;
+        let end = data.length;
+        let find = 14;
+        let pos = undefined;
+        function Recursive(data, start, end) {
+            mid = Math.floor((start + end) / 2);
+            if (data[mid] == find) {
+                pos = mid;
+                return true;
+            } else if (data[mid] < find) {
+                Recursive(data, mid + 1, end);
+            }
+            else {
+                Recursive(data, start, mid - 1);
+            }
+
+        }
+        Recursive(data, start, end)
+
+        console.log(pos)
+
+
+    </script>
+</body>
+
+</html>

@@ -14,3 +14,8 @@ it follows  fifo
  two type of Queue
  enqueue add new element at thr end of the queue
  dequeue remove  element
+ ********************************************************************************
+ binary search -> no of inputs/2; it is required to sort the condition it is compulsory
+ if the search element is less than mid thn it goes to the left of the queue otherwise it goes to the right
+
+
