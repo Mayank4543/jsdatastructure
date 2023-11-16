@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>map</h1>
+    <script>
+        let data = new Map([
+            ['name', 'mayank'],
+            [100, 'hundred'],
+            [true, 'false'],
+
+        ]);
+        data.set('red', 'blue');
+        console.log(data.size)
+        console.log(data.has(100))
+        console.log(data.get(100))
+        console.log(data)
+        for (x of data) {
+            console.log(x)
+        }
+        data.forEach((val, key) => {
+            console.log(key)
+        })
+    </script>
+</body>
+
+</html>

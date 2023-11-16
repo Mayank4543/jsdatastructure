@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let dtaa = {
+            name: "mayank",
+            age: 20,
+            mail: "maayanan@gmail.com",
+            getName: function () {
+                return this.name
+            }
+
+        }
+        for (x in dtaa) {
+            console.log(dtaa[x])
+        }
+        console.log(Object.keys(dtaa))
+        console.log(Object.values(dtaa));
+        console.log(Object.entries(dtaa))
+
+    </script>
+</body>
+
+</html>

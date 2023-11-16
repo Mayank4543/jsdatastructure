@@ -15,15 +15,18 @@
         let maxKey = '';
         for (let i = 0; i < str.length; i++) {
             let key = str[i];
+            // console.log(key)
             if (!strobj[key]) {
                 strobj[key] = 0;
+                // console.log(strobj[key])
             };
             strobj[key]++;
+            console.log(strobj[key]);
             if (maxKey == '' || strobj[key] > strobj[maxKey]) {
                 maxKey = key
             }
         }
-        console.log(maxKey)
+        // console.log(maxKey)
     </script>
 </body>
 
