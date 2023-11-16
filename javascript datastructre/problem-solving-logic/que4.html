@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Maximum occurring character in string </h3>
+    <script>
+        let str = "hello world";
+        let strobj = {};
+        let maxKey = '';
+        for (let i = 0; i < str.length; i++) {
+            let key = str[i];
+            if (!strobj[key]) {
+                strobj[key] = 0;
+            };
+            strobj[key]++;
+            if (maxKey == '' || strobj[key] > strobj[maxKey]) {
+                maxKey = key
+            }
+        }
+        console.log(maxKey)
+    </script>
+</body>
+
+</html>

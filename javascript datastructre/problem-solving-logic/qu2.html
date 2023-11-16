@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagram-Question</title>
+</head>
+
+<body>
+    <h3>
+        check strings are Anagram
+    </h3>
+    <script>
+        function checkanagram(str1, str2) {
+            let objstr1 = {};
+            if (str1.length !== str2.length) {
+                return false;
+            }
+            for (ch of str1) {
+                objstr1[ch] = (objstr1[ch] || 0) + 1
+            }
+            for (ch of str2) {
+                // console.log(objstr1[ch])
+                if (!objstr1[ch]) {
+                    return false;
+                }
+                objstr1[ch]--;
+            }
+            return true;
+        }
+        console.log(checkanagram('heart', 'earth'))
+    </script>
+</body>
+
+</html>
