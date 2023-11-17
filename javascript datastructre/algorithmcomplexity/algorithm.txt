@@ -18,4 +18,10 @@ it follows  fifo
  binary search -> no of inputs/2; it is required to sort the condition it is compulsory
  if the search element is less than mid thn it goes to the left of the queue otherwise it goes to the right
 
-
+****************************************************************
+object advantage over array it provide  easy identifiaction of element
+map -> it is pair of key and value pair but in we use any data type incase object we cant use any datatype it is only string...
+set data structure->it remove duplicacy of the data
+****************************************************************
+LInked list -> address of the next list
+head ,tail,node(value,next) -> address

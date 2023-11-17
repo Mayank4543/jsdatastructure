@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <H1>Linked list</H1>
+    <script>
+        class List {
+            constructor(item) {
+                this.head = {
+                    value: item,
+                    next: null,
+
+                };
+                this.tail = this.head;
+                this.size = 1;
+                // shallowcopy
+            }
+            appendnode(newdata) {
+                let newnode = {
+                    value: newdata,
+                    next: null,
+                };
+                this.tail.next = newnode;
+                this.tail = newnode;
+                this.size += 1;
+            }
+            traversing() {
+                let counter = 0;
+                let currentnode = this.head;
+                while (counter < this.size) {
+                    // console.log(counter);
+                    currentnode = currentnode.next
+                    console.log(currentnode);
+                    counter++;
+                }
+            }
+            deletenode(index) {
+                let counter = 1;
+                let lead = this.head
+                if (index == 1) {
+                    this.head = this.head.next
+                } else {
+                    while (counter < index - 1) {
+                        lead = lead.next;
+                        counter++
+                    }
+                    let nextNode = lead.next.next;
+                    lead.next = nextNode
+                }
+            }
+        }
+        let list = new List(200);
+        list.appendnode(300)
+        list.appendnode(400)
+        list.appendnode(500)
+        list.appendnode(600)
+        list.appendnode(700)
+        list.traversing()
+        list.deletenode(4)
+        console.log(list)
+    </script>
+</body>
+
+</html>
