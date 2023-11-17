@@ -25,3 +25,10 @@ set data structure->it remove duplicacy of the data
 ****************************************************************
 LInked list -> address of the next list
 head ,tail,node(value,next) -> address
+****************************************************************
+Tree data structure
+----------------------------------------------------------------
+Tree is hierarchical representation 
+it is connected through edges
+data form hota nodes ke form mein 
+tree is a non-linear data structure (it is not in sequence )

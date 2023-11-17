@@ -46,6 +46,23 @@
                     next: nextnode
                 }
             }
+            searchnode(data) {
+                let result = undefined;
+                let lead = this.head;
+                let loop = true;
+                while (loop) {
+                    lead = lead.next
+                    // console.log(lead)
+                    loop = !!lead;
+                    // console.log(loop)
+                    if (loop && lead.value === data) {
+                        loop = false;
+                        result = lead;
+                    }
+                    console.log(result)
+                }
+
+            }
 
         }
 
@@ -55,8 +72,8 @@
         list.appendnode(500)
         list.appendnode(600)
         list.appendnode(700)
-        list.insertnode(3, 5000)
-
+        // list.insertnode(3, 5000)
+        list.searchnode(400)
         console.log(list)
     </script>
 </body>
