@@ -8,7 +8,43 @@
 </head>
 
 <body>
-    <h1>Make Graph and Add Vertex</h1>
+    <h1>Make Graph and Add Vertex by Adjacencylist</h1>
+    <script>
+        class Graph {
+            constructor() {
+                this.adddata = {}
+            }
+            addVertex(vertex) {
+                if (!this.adddata[vertex]) {
+                    this.adddata[vertex] = [];
+                }
+            }
+            addedge(v1, v2) {
+                if (!this.adddata[v1]) {
+                    this.addVertex(v1)
+                }
+                if (!this.adddata[v2]) {
+                    this.addVertex(v2)
+                }
+                this.adddata[v1].push(v2)
+                this.adddata[v2].push(v1)
+            }
+        }
+        let graph1 = new Graph();
+        graph1.addVertex("A")
+        graph1.addVertex("B")
+        graph1.addVertex("C")
+        graph1.addVertex("D")
+        graph1.addedge("A", "C")
+        graph1.addedge("B", "A")
+        graph1.addedge("B", "C")
+        graph1.addedge("B", "D")
+        // graph1.addedge("C", "A")
+        // graph1.addedge("C", "B")
+        // graph1.addedge("D", "B")
+
+        console.log(graph1.adddata);
+    </script>
 </body>
 
 </html>
