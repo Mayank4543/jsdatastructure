@@ -46,3 +46,17 @@ delete node ka logic
 1 .kii hume esi node delete karni hogi jiske na toh left node na toh right node  jaise last node of the tree  
 2 . koi bhi node jiske ya toh left ho right node hain 
 3 koi ek esi jiski dono left ur right 
+
+****************************************************************
+graph is a non linear structure that
+node it is connected through edges and their representation is pictorial
+two types of graph
+Directed graph is it provide direction for traversing the nodes
+undirected graph is not provide direction
+disconnected graph which is not connected by edges 
+Bi directional graph A<-> B 
+Self loop graph  A<-> B -<-> B
+use of graph 
+ Google map  instagram mutual friend wlaa option 
+ Adjacency matrix -. jab hum matrix ke form mein node banate hain
+ Adjacency list -. Adjacency list jb list ke form mein hota hain
