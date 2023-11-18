@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Binary Search Tree in JavaScript</h1>
+    <h1>DFS i JavaScript</h1>
     <script>
         class Node {
             constructor(val) {
@@ -68,6 +68,50 @@
                     return this.search(root.right, val);
                 }
             }
+            preorder(root) {
+
+                if (root) {
+                    console.log(root.value)
+                    this.preorder(root.left);
+                    this.preorder(root.right);
+                }
+
+            }
+            inorder(root) {
+
+                if (root) {
+
+                    this.preorder(root.left);
+                    console.log(root.value)
+                    this.preorder(root.right);
+                }
+
+            }
+            postorder(root) {
+
+                if (root) {
+
+                    this.preorder(root.left);
+
+                    this.preorder(root.right);
+                    console.log(root.value)
+                }
+
+            }
+            bfsTraversing(root) {
+                let queue = []
+                queue.push(this.root);
+                while (queue.length) {
+                    let current = queue.shift();
+                    if (current.left) {
+                        queue.push(current.left);
+                    }
+                    if (current.right) {
+                        queue.push(current.right);
+                    }
+                    console.log(current.value)
+                }
+            }
         }
 
         let bst = new BST();
@@ -75,7 +119,13 @@
         bst.maketree(12);
         bst.maketree(10);
         bst.maketree(13);
+        bst.maketree(14);
+        bst.maketree(15);
+        bst.maketree(11)
         bst.search(bst.root, 10)
+        bst.preorder(bst.root)
+        bst.inorder(bst.root)
+        bst.postorder(bst.root)
         console.log(bst)
     </script>
 </body>

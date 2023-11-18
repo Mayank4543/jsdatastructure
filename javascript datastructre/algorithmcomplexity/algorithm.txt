@@ -32,3 +32,13 @@ Tree is hierarchical representation
 it is connected through edges
 data form hota nodes ke form mein 
 tree is a non-linear data structure (it is not in sequence )
+search-node tree logic  first we have to check root is equal to null 
+1 first node which i search  khi wo root toh nhi hain 
+jo value apun search kar rhe hain khi root se badii toh nhi hain 
+jo vlaue search kar he hain wo exist kar rhi hain ki nhi 
+****************************************************************
+dfs ->it search node to the depth of the node 
+preorder top to bottom (top->left->right)
+inorder
+postorder yeh kya karta hain har ek tree ka pehle left wala uthyega fir uske baad right wala afte that root 
+bfs work on top level by level
