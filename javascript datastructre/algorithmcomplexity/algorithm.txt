@@ -42,3 +42,7 @@ preorder top to bottom (top->left->right)
 inorder
 postorder yeh kya karta hain har ek tree ka pehle left wala uthyega fir uske baad right wala afte that root 
 bfs work on top level by level
+delete node ka logic
+1 .kii hume esi node delete karni hogi jiske na toh left node na toh right node  jaise last node of the tree  
+2 . koi bhi node jiske ya toh left ho right node hain 
+3 koi ek esi jiski dono left ur right 

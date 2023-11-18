@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>DFS i JavaScript</h1>
+    <h1>BFS in JavaScript</h1>
     <script>
         class Node {
             constructor(val) {
@@ -112,21 +112,79 @@
                     console.log(current.value)
                 }
             }
+
+            minvalue(root) {
+                if (!root.left) {
+                    return root.value
+                } else {
+                    return this.minvalue(root.left)
+                }
+            }
+            maxvalue(root) {
+                if (!root.right) {
+                    return root.value
+                } else {
+                    return this.maxvalue(root.right)
+                }
+            }
+            removenode(value) {
+                this.root = this.deletenode(this.root, value)
+                // console.log(this.root)
+            }
+            deletenode(root, value) {
+                if (root === null) {
+                    return null;
+                }
+
+                if (value < root.value) {
+                    // Update the left child
+                    root.left = this.deletenode(root.left, value);
+                } else if (value > root.value) {
+                    // Update the right child
+                    root.right = this.deletenode(root.right, value);
+                } else {
+                    // Node to be deleted is found
+
+                    if (!root.left) {
+                        // Node with only right child or no child
+                        return root.right;
+                    } else if (!root.right) {
+                        // Node with only left child
+                        return root.left;
+                    }
+
+                    // Node with two children: get the in-order successor (smallest in the right subtree)
+                    root.value = this.minvalue(root.right);
+
+                    // Delete the in-order successor
+                    root.right = this.deletenode(root.right, root.value);
+                }
+
+                return root;
+            }
+
+
+
         }
 
         let bst = new BST();
-        console.log(bst.istreeempty());
+        // console.log(bst.istreeempty());
         bst.maketree(12);
         bst.maketree(10);
         bst.maketree(13);
         bst.maketree(14);
         bst.maketree(15);
         bst.maketree(11)
-        bst.search(bst.root, 10)
-        bst.preorder(bst.root)
-        bst.inorder(bst.root)
-        bst.postorder(bst.root)
-        console.log(bst)
+        // bst.search(bst.root, 10)
+        // bst.preorder(bst.root)
+        // bst.inorder(bst.root)
+        // bst.postorder(bst.root)
+
+        console.log(bst.minvalue(bst.root))
+        // console.log(bst.maxvalue(bst.root))
+        bst.bfsTraversing(bst.root)
+        console.log(bst.root)
+        console.log(bst.removenode(15))
     </script>
 </body>
 
