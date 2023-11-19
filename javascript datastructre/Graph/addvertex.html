@@ -29,6 +29,26 @@
                 this.adddata[v1].push(v2)
                 this.adddata[v2].push(v1)
             }
+            removeedge(v1, v2) {
+                // console.log(v1, v2)
+                this.adddata[v1] = this.adddata[v1].filter((item) => {
+                    return item != v2
+                })
+                this.adddata[v2] = this.adddata[v2].filter((item) => {
+                    return item != v1
+                })
+            }
+            removevertex(vertex) {
+                if (!this.adddata[vertex]) {
+                    return
+                }
+                for (let item of this.adddata[vertex]) {
+                    this.removeedge(vertex, item)
+                }
+                delete this.adddata[vertex]
+
+            }
+
         }
         let graph1 = new Graph();
         graph1.addVertex("A")
@@ -42,6 +62,8 @@
         // graph1.addedge("C", "A")
         // graph1.addedge("C", "B")
         // graph1.addedge("D", "B")
+        // graph1.removeedge("A", "B");
+        graph1.removevertex('A');
 
         console.log(graph1.adddata);
     </script>
