@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavbarwithLogin</title>
+    <link rel="stylesheet" href="output.css">
+
+</head>
+<body class="bg-linear-to-r from-purple-500 to-blue-500 min-h-screen">
+
+    <!-- <nav class="bg-white shadow px-6 py-4"> -->
+        <!-- <div class="max-w-7xl mx-auto flex  justify-between items-center">
+
+            <h2 class=" text-2xl font-bold text-indigo-600"> Logo </h2>
+            <ul class="hidden md:flex  gap-6">
+                <li class="cursor-pointer text-xl">Feature</li>
+                <li class="cursor-pointer text-xl">Services</li>
+                <li class="cursor-pointer text-xl">Contact</li>
+            </ul>
+            <div class="hidden md:flex gap-3" >
+                <button class=" border px-4 py-2 rounded-lg text-xl bg-indigo-50 hover:bg-indigo-100 transition duration-300">
+                    Login
+                </button>
+                <button class=" border px-4 py-2 rounded-lg text-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 transition duration-300">Sign Up</button>
+            </div>
+            <button id="nav2-btn" class="md:hidden text-3xl">&#9776;</button>
+        </div>
+         <div id="nav2-menu " class="hidden md:hidden mt-4">
+            <ul class="flex flex-col gap-4">
+                <li class="cursor-pointer text-xl">Feature</li>
+                <li class="cursor-pointer text-xl">Services</li>
+                <li class="cursor-pointer text-xl">Contact</li>
+            </ul>
+            <div class="flex flex-col gap-3 mt-4">
+                <button class=" border px-4 py-2 rounded-lg text-xl bg-indigo-50 hover:bg-indigo-100 transition duration-300">
+                    Login
+                </button>
+                <button class=" border px-4 py-2 rounded-lg text-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 transition duration-300">Sign Up</button>
+            </div>
+         </div> -->
+    <!-- </nav> -->
+     <!-- <nav class="sticky top-0 bg-white shadow-md px-6 py-4">
+        <div class=" max-w-7xl  mx-auto flex justify-between items-center">
+            <!-- Logo -->
+             <!-- <h2 class=" font-bold text-2xl text-indigo-400">My Logo</h2>
+             <div class="hidden md:flex">
+                <input type="search" name="" id="" placeholder="Search Here!" class="px-5 py-4 border rounded-lg w-76">
+             </div>
+             <ul class="hidden md:flex gap-6 font-medium">
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+             </ul>
+             <button id="nav2-btn" class="md:hidden text-3xl">&#9776;</button>
+        </div>
+         <div id="nav2-menu" class="hidden md:hidden mt-4 gap-3">
+             <input type="search" name="" id="" placeholder="Search Here!" class="px-5 py-4 border rounded-2xl w-full">
+            <ul class="flex flex-col gap-3 font-medium">
+                 <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+            <div class="hidden md:flex"> -->
+               
+             <!-- </div> -->
+         <!-- </div> -->
+
+     <!-- </nav>  -->
+      <nav class="backdrop-blur-lg bg-white/30 shadow px-6 py-4 fixed w-full top-0">
+        <div class="max-w-7xl flex mx-auto justify-between items-center ">
+            <h2 class=" text-indigo-500 font-bold text-3xl drop-shadow-xl">Logo </h2>
+            <ul class="hidden md:flex gap-6">
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+            <button id="nav2-btn" class="md:hidden text-3xl">&#9776;</button>
+        </div>
+         <div id="nav2-menu" class="hidden md:hidden mt-4">
+            <ul class="flex flex-col gap-4">
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>            </ul>
+         </div>
+      </nav>
+    <script>
+        const menubutton=document.getElementById('nav2-btn');
+        const menu=document.getElementById('nav2-menu');
+        menubutton.addEventListener('click',()=>{
+            menu.classList.toggle('hidden')
+        });
+    </script>
+    
+</body>
+</html>
