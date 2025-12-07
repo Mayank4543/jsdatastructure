@@ -46,4 +46,28 @@ function isPrime(num){
     }
     return true;
 }
+// Count the Occurrences of a Character in a String
 let str3= "banana";
+function countCharacterOccurrences(str,char){
+    let count =0;
+    for(let i =0;i<str.length;i++){
+        if(str[i]===char){
+            count++;
+        }
+    }
+    return count;
+}
+console.log(countCharacterOccurrences(str3,'a'));
+let str4= "banana";
+function countoccurances(str){
+    let freq={};
+    for(let char of str4){
+      if(freq[char]){
+        freq[char]++;
+      } else {
+        freq[char] = 1;
+      }
+    }
+    return freq;
+}
+console.log(countoccurances(str4));
