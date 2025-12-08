@@ -71,3 +71,11 @@ function countoccurances(str){
     return freq;
 }
 console.log(countoccurances(str4));
+// Tow SUM
+let arr=[2,7,11,15];
+let target=9;
+function twoSum(arr,target){
+    for(let i =0;i<arr.length;i++){
+``
+    }
+}
