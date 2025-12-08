@@ -1,8 +1,6 @@
 const FeaturesSection = () => {
   return (
-    
-
-      <section className="bg-orange-100 py-20 px-4" id="course">
+    <section className="bg-orange-100 py-20 px-4" id="course">
       <div className="max-w-7xl mx-auto text-center ">
         <h2 className="text-5xl font-extrabold text-gray-800 mb-4">Our Top Courses</h2>
         <p className="text-gray-600 max-w-2xl mx-auto mb-14">Learn from industry experts and boost your career with our popular, high-demand courses.</p>
@@ -43,6 +41,7 @@ const FeaturesSection = () => {
         </div>
       </div>
     </section>
+    
   );
 };
 

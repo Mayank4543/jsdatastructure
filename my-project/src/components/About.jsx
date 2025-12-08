@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <section className="bg-orange-100 py-20 px-4 mt-24 min-h-screen">
+    <section className="bg-orange-100 py-20 px-4 mt-18 min-h-screen">
       <div className="max-w-7xl mx-auto text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 mb-6">
           About Us
