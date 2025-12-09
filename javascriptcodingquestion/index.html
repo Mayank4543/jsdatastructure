@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Throttle Scroll Demo</title>
+
+  <style>
+    body {
+      height: 2000px;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    #box {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: black;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Throttle Scroll Demo</h1>
+  <p>Scroll this page and see how throttle limits the scroll updates.</p>
+
+  <div id="box">Scroll Y: 0</div>
+
+  <script>
+    function throttle(fn, delay) {
+      let last = 0;
+      return function (...args) {
+        const now = Date.now();
+        if (now - last >= delay) {
+          fn.apply(this, args);
+          last = now;
+        }
+      };
+    }
+
+    function updateScroll() {
+      document.getElementById("box").innerText =
+        "Scroll Y: " + window.scrollY;
+    }
+
+    const throttledScroll = throttle(updateScroll, 300);
+
+    window.addEventListener("scroll", throttledScroll);
+  </script>
+
+</body>
+</html>

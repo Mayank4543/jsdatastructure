@@ -3,14 +3,14 @@ let str=""
 for(let i =name.length-1;i>=0;i--){
     str+=name[i];
 }
-console.log(str);
+// console.log(str);
 let str1= "racecar";
 for(let i =0;i<str1.length-1;i++){
     if(str1[i]!==str1[str1.length-1-i]){
         console.log("not plaindrome");
         break;
     }else{
-        console.log("palindrome")
+        // console.log("palindrome")
         break;
     }
 }
@@ -25,7 +25,7 @@ function findlargestNumber(arr){
     }
     return largest;
 }
-console.log(findlargestNumber([3,5,7,2,8,1]));
+// console.log(findlargestNumber([3,5,7,2,8,1]));
 
 // Calculate the Factorial of a Number
 function factorial(n){
@@ -35,7 +35,7 @@ function factorial(n){
         return n*factorial(n-1);
     }
 }
-console.log(factorial(5));
+// console.log(factorial(5));
 // Check for Prime Number
 function isPrime(num){
     if(num<=1) return false;        
@@ -57,7 +57,7 @@ function countCharacterOccurrences(str,char){
     }
     return count;
 }
-console.log(countCharacterOccurrences(str3,'a'));
+// console.log(countCharacterOccurrences(str3,'a'));
 let str4= "banana";
 function countoccurances(str){
     let freq={};
@@ -70,12 +70,50 @@ function countoccurances(str){
     }
     return freq;
 }
-console.log(countoccurances(str4));
+// console.log(countoccurances(str4));
 // Tow SUM
 let arr=[2,7,11,15];
 let target=9;
 function twoSum(arr,target){
     for(let i =0;i<arr.length;i++){
-``
+        for(let j =i+1;j<arr.length;j++){
+            if(arr[i]+arr[j]===target){
+                return [i,j];
+            }
+        }       
     }
 }
+let arr2=[1,2,[3,4],[5,6],7,8];
+function flattenarray(arr2){
+    let result=[];
+    for(let item of arr2){
+        if(Array.isArray(item)){
+            result.push(...flattenarray(item))
+        }else{
+            result.push(item);
+        }
+    }
+    return result;
+}
+console.log(flattenarray(arr2))
+
+function debounce(func, delay) {
+  let timer;
+
+  return function (...args) {
+    clearTimeout(timer); // purana timer hata do
+
+    timer = setTimeout(() => {
+      func.apply(this, args); // last wala hi chalega
+    }, delay);
+  };
+}
+
+function search(x){
+    console.log("searching", x);
+}
+
+const debouncing=debounce(search,500);
+debouncing("app");
+debouncing("appl");
+debouncing("apple")
