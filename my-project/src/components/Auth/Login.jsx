@@ -62,6 +62,7 @@ const Login = () => {
                         <span className="px-4 bg-white text-gray-500">Or continue with</span>
                     </div>
                 </div>
+                
 
                 {/* Social Login */}
                 <div className="grid grid-cols-2 gap-4">
