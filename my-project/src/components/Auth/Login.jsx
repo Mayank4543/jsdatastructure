@@ -3,53 +3,94 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
-    const [formData, setFormData] = useState({
-        email: "",
-        password: ""
-    });
-    const [rememberMe, setRememberMe] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
+    // const [formData, setFormData] = useState({
+    //     email: "",
+    //     password: ""
+    // });
+    // const [rememberMe, setRememberMe] = useState(false);
+    // const [isSubmitting, setIsSubmitting] = useState(false);
+    // const [errorMessage, setErrorMessage] = useState("");
 
-    const { login } = useAuth();
-    const navigate = useNavigate();
+    // const { login } = useAuth();
+    // const navigate = useNavigate();
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setFormData(prev => ({
+    //         ...prev,
+    //         [name]: value
+    //     }));
+    //     // Clear error when user starts typing
+    //     if (errorMessage) setErrorMessage("");
+    // };
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     setErrorMessage("");
+
+    //     // Client-side validation
+    //     if (!formData.email || !formData.password) {
+    //         setErrorMessage("Please fill in all fields");
+    //         return;
+    //     }
+
+    //     try {
+    //         setIsSubmitting(true);
+    //         const result = await login(formData);
+
+    //         if (result.success) {
+    //             // Redirect to home page after successful login
+    //             navigate("/");
+    //         } else {
+    //             setErrorMessage(result.error || "Login failed. Please try again.");
+    //         }
+    //     } catch (error) {
+    //         setErrorMessage("An unexpected error occurred. Please try again.");
+    //     } finally {
+    //         setIsSubmitting(false);
+    //     }
+    // };
+    const [formData,setFormData]=useState({
+        name:"",
+        email:""
+    })
+    const [rememberMe,setRememberme] =useState(false);
+    const[isSubmitting,setIsSubmitting]=useState(false)
+    const [errorMessage,setErrorMessage]=useState("");
+    const {login}=useAuth();
+    const navigate= useNavigate();
+    const handleChange=(e)=>{
+        const {name,value}=e.target;
+        setFormData(prev=>({
             ...prev,
-            [name]: value
-        }));
-        // Clear error when user starts typing
+            [name]:value
+        }))
+            // Clear error when user starts typing
         if (errorMessage) setErrorMessage("");
-    };
+    }
+    const handleSubmit=async(e)=>{
+         e.preventDefault();
+         setErrorMessage("")
+         if(!formData.name || !formData.email){
+            setErrorMessage("Please provide all details");
+            return ;
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setErrorMessage("");
-
-        // Client-side validation
-        if (!formData.email || !formData.password) {
-            setErrorMessage("Please fill in all fields");
-            return;
-        }
-
-        try {
-            setIsSubmitting(true);
-            const result = await login(formData);
-
-            if (result.success) {
-                // Redirect to home page after successful login
-                navigate("/");
-            } else {
-                setErrorMessage(result.error || "Login failed. Please try again.");
+         }
+         setIsSubmitting(true);
+         try {
+            const result= await login(formData);
+            if(result.success){
+                navigate('/');
+            }else{
+                setErrorMessage(result.error ||"Login Failed. Please try again! ")
             }
-        } catch (error) {
-            setErrorMessage("An unexpected error occurred. Please try again.");
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
+           } catch (error) {
+             setErrorMessage('An uexpected error occur .Please try again!')
+          }finally{
+            isSubmitting(false);
+          }
+    }
+
 
     return (
         <div className="min-h-screen bg-linear-to-br from-orange-100 via-orange-50 to-white flex items-center justify-center px-4 py-20">
@@ -108,7 +149,7 @@ const Login = () => {
                             <input 
                                 type="checkbox" 
                                 checked={rememberMe}
-                                onChange={(e) => setRememberMe(e.target.checked)}
+                                onChange={(e)=>setRememberme(checked)}
                                 className="w-4 h-4 accent-blue-500"
                                 disabled={isSubmitting}
                             />

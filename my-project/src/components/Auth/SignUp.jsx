@@ -3,49 +3,117 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const SignUp = () => {
+    // const [formData, setFormData] = useState({
+    //     name: "",
+    //     email: "",
+    //     password: "",
+    //     confirmPassword: ""
+    // });
+    // const [agreedToTerms, setAgreedToTerms] = useState(false);
+    // const [isSubmitting, setIsSubmitting] = useState(false);
+    // const [errorMessage, setErrorMessage] = useState("");
+
+    // const { register } = useAuth();
+    // const navigate = useNavigate();
+
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setFormData(prev => ({
+    //         ...prev,
+    //         [name]: value
+    //     }));
+    //     // Clear error when user starts typing
+    //     if (errorMessage) setErrorMessage("");
+    // };
+
+    // const validateForm = () => {
+    //     const { name, email, password, confirmPassword } = formData;
+
+    //     if (!name || !email || !password || !confirmPassword) {
+    //         setErrorMessage("Please fill in all fields");
+    //         return false;
+    //     }
+
+    //     if (name.trim().length < 2) {
+    //         setErrorMessage("Name must be at least 2 characters long");
+    //         return false;
+    //     }
+
+    //     if (password.length < 6) {
+    //         setErrorMessage("Password must be at least 6 characters long");
+    //         return false;
+    //     }
+
+    //     if (password !== confirmPassword) {
+    //         setErrorMessage("Passwords do not match");
+    //         return false;
+    //     }
+
+    //     if (!agreedToTerms) {
+    //         setErrorMessage("Please agree to the Terms and Conditions");
+    //         return false;
+    //     }
+
+    //     return true;
+    // };
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     setErrorMessage("");
+
+    //     if (!validateForm()) {
+    //         return;
+    //     }
+
+    //     try {
+    //         setIsSubmitting(true);
+
+    //         // Remove confirmPassword before sending to API
+    //         const { confirmPassword, ...userData } = formData;
+    //         const result = await register(userData);
+
+    //         if (result.success) {
+    //             // Redirect to home page after successful registration
+    //             navigate("/");
+    //         } else {
+    //             setErrorMessage(result.error || "Registration failed. Please try again.");
+    //         }
+    //     } catch (error) {
+    //         setErrorMessage("An unexpected error occurred. Please try again.");
+    //     } finally {
+    //         setIsSubmitting(false);
+    //     }
+    // };
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         password: "",
         confirmPassword: ""
-    });
+    })
     const [agreedToTerms, setAgreedToTerms] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-
-    const { register } = useAuth();
-    const navigate = useNavigate();
-
+    const {register}=useAuth();
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
             [name]: value
-        }));
-        // Clear error when user starts typing
-        if (errorMessage) setErrorMessage("");
-    };
-
-    const validateForm = () => {
-        const { name, email, password, confirmPassword } = formData;
-
-        if (!name || !email || !password || !confirmPassword) {
-            setErrorMessage("Please fill in all fields");
-            return false;
+        }))
+        if (errorMessage) setErrorMessage("")
+    }
+    const validationForm = () => {
+         const {name , email, password,confirmPassword}=formData;
+        if (!formData.name || !formData.email || !formData.password) {
+            setErrorMessage("Please Provide all detail");
+            return flase;
         }
-
         if (name.trim().length < 2) {
-            setErrorMessage("Name must be at least 2 characters long");
+            setErrorMessage("Name must be atleast 2 character long");
             return false;
         }
-
         if (password.length < 6) {
-            setErrorMessage("Password must be at least 6 characters long");
-            return false;
-        }
-
-        if (password !== confirmPassword) {
-            setErrorMessage("Passwords do not match");
+            setErrorMessage('Password must be atleast 6 character long');
             return false;
         }
 
@@ -55,40 +123,35 @@ const SignUp = () => {
         }
 
         return true;
-    };
-
-    const handleSubmit = async (e) => {
+    }
+    const handleSubmit=async(e)=>{
         e.preventDefault();
         setErrorMessage("");
-
-        if (!validateForm()) {
+        if (!validationForm()) {
             return;
         }
-
         try {
-            setIsSubmitting(true);
-            
-            // Remove confirmPassword before sending to API
-            const { confirmPassword, ...userData } = formData;
+            const {confirmPassword,...userData}=formData;
             const result = await register(userData);
-
-            if (result.success) {
-                // Redirect to home page after successful registration
-                navigate("/");
-            } else {
+            if(result.success){
+                Navigate('/');
+            }else{
                 setErrorMessage(result.error || "Registration failed. Please try again.");
             }
         } catch (error) {
-            setErrorMessage("An unexpected error occurred. Please try again.");
-        } finally {
+            console.error("An unexpected error occurred. Please try again.");
+        }finally{
             setIsSubmitting(false);
         }
-    };
+
+    }
+
+    cons
 
     return (
         <div className="min-h-screen bg-linear-to-br from-orange-100 via-orange-50 to-white flex items-center justify-center px-4 py-20">
             <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 space-y-6">
-                
+
                 {/* Header */}
                 <div className="text-center">
                     <h2 className="text-4xl font-extrabold text-gray-800 mb-2">Create Account</h2>
@@ -108,12 +171,12 @@ const SignUp = () => {
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
                             Full Name
                         </label>
-                        <input 
+                        <input
                             type="text"
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            placeholder="Enter your full name" 
+                            placeholder="Enter your full name"
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                             required
                             disabled={isSubmitting}
@@ -124,12 +187,12 @@ const SignUp = () => {
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
                             Email Address
                         </label>
-                        <input 
+                        <input
                             type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            placeholder="Enter your email" 
+                            placeholder="Enter your email"
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                             required
                             disabled={isSubmitting}
@@ -140,12 +203,12 @@ const SignUp = () => {
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
                             Password
                         </label>
-                        <input 
+                        <input
                             type="password"
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
-                            placeholder="Create a password (min 6 characters)" 
+                            placeholder="Create a password (min 6 characters)"
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                             required
                             disabled={isSubmitting}
@@ -157,12 +220,12 @@ const SignUp = () => {
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
                             Confirm Password
                         </label>
-                        <input 
+                        <input
                             type="password"
                             name="confirmPassword"
                             value={formData.confirmPassword}
                             onChange={handleChange}
-                            placeholder="Confirm your password" 
+                            placeholder="Confirm your password"
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                             required
                             disabled={isSubmitting}
@@ -171,7 +234,7 @@ const SignUp = () => {
 
                     {/* Terms & Conditions */}
                     <div className="flex items-start gap-2">
-                        <input 
+                        <input
                             type="checkbox"
                             checked={agreedToTerms}
                             onChange={(e) => setAgreedToTerms(e.target.checked)}
@@ -192,14 +255,13 @@ const SignUp = () => {
                     </div>
 
                     {/* Submit Button */}
-                    <button 
+                    <button
                         type="submit"
                         disabled={isSubmitting}
-                        className={`w-full py-3 text-white font-semibold rounded-lg transition-all duration-200 ${
-                            isSubmitting 
-                                ? 'bg-blue-400 cursor-not-allowed' 
+                        className={`w-full py-3 text-white font-semibold rounded-lg transition-all duration-200 ${isSubmitting
+                                ? 'bg-blue-400 cursor-not-allowed'
                                 : 'bg-blue-500 hover:bg-blue-600 hover:shadow-lg'
-                        }`}
+                            }`}
                     >
                         {isSubmitting ? 'Creating Account...' : 'Sign Up'}
                     </button>
