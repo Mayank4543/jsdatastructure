@@ -7,6 +7,9 @@ import ContactForm from './components/ContactForm.jsx';
 import Footer from './components/Footer.jsx';
 import Login from './components/Auth/Login.jsx';
 import SignUp from './components/Auth/SignUp.jsx';
+import Blogs from './pages/Blogs.jsx';
+import CreateBlog from './components/Blog/CreateBlog.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 function AppContent() {
   const location = useLocation();
@@ -19,6 +22,15 @@ function AppContent() {
         <Route path='/' element={<Hero />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<ContactForm />} />
+        <Route path='/blogs' element={<Blogs />} />
+        <Route 
+          path='/create-blog' 
+          element={
+            <ProtectedRoute>
+              <CreateBlog />
+            </ProtectedRoute>
+          } 
+        />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
       </Routes>

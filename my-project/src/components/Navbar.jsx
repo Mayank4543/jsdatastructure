@@ -34,6 +34,9 @@ const Navbar = () => {
                         <Link to="/about">About</Link>
                     </li>
                     <li className="hover:text-gray-200 cursor-pointer">
+                        <Link to="/blogs">Blogs</Link>
+                    </li>
+                    <li className="hover:text-gray-200 cursor-pointer">
                         <Link to="/contact">Contact</Link>
                     </li>
 
@@ -82,6 +85,9 @@ const Navbar = () => {
                         </li>
                         <li className="py-3 px-3 rounded-lg hover:bg-gray-600 hover:translate-x-1 transition-all duration-300">
                             <Link to="/about" onClick={() => setOpen(false)}>About</Link>
+                        </li>
+                        <li className="py-3 px-3 rounded-lg hover:bg-gray-600 hover:translate-x-1 transition-all duration-300">
+                            <Link to="/blogs" onClick={() => setOpen(false)}>Blogs</Link>
                         </li>
                         <li className="py-3 px-3 rounded-lg hover:bg-gray-600 hover:translate-x-1 transition-all duration-300">
                             <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>

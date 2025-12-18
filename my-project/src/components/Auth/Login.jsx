@@ -51,10 +51,11 @@ const Login = () => {
     //     }
     // };
     const [formData,setFormData]=useState({
-        name:"",
-        email:""
+       
+        email:"",
+        password:""
     })
-    const [rememberMe,setRememberme] =useState(false);
+    const [rememberMe,setRememberMe] =useState(false);
     const[isSubmitting,setIsSubmitting]=useState(false)
     const [errorMessage,setErrorMessage]=useState("");
     const {login}=useAuth();
@@ -71,12 +72,12 @@ const Login = () => {
     const handleSubmit=async(e)=>{
          e.preventDefault();
          setErrorMessage("")
-         if(!formData.name || !formData.email){
+         if(!formData.email || !formData.password){
             setErrorMessage("Please provide all details");
             return ;
 
          }
-         setIsSubmitting(true);
+          setIsSubmitting(true);
          try {
             const result= await login(formData);
             if(result.success){
@@ -87,7 +88,7 @@ const Login = () => {
            } catch (error) {
              setErrorMessage('An uexpected error occur .Please try again!')
           }finally{
-            isSubmitting(false);
+           setIsSubmitting(false);
           }
     }
 
@@ -149,7 +150,7 @@ const Login = () => {
                             <input 
                                 type="checkbox" 
                                 checked={rememberMe}
-                                onChange={(e)=>setRememberme(checked)}
+                                onChange={(e)=>setRememberMe(e.target.checked)}
                                 className="w-4 h-4 accent-blue-500"
                                 disabled={isSubmitting}
                             />

@@ -3,87 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const SignUp = () => {
-    // const [formData, setFormData] = useState({
-    //     name: "",
-    //     email: "",
-    //     password: "",
-    //     confirmPassword: ""
-    // });
-    // const [agreedToTerms, setAgreedToTerms] = useState(false);
-    // const [isSubmitting, setIsSubmitting] = useState(false);
-    // const [errorMessage, setErrorMessage] = useState("");
-
-    // const { register } = useAuth();
-    // const navigate = useNavigate();
-
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData(prev => ({
-    //         ...prev,
-    //         [name]: value
-    //     }));
-    //     // Clear error when user starts typing
-    //     if (errorMessage) setErrorMessage("");
-    // };
-
-    // const validateForm = () => {
-    //     const { name, email, password, confirmPassword } = formData;
-
-    //     if (!name || !email || !password || !confirmPassword) {
-    //         setErrorMessage("Please fill in all fields");
-    //         return false;
-    //     }
-
-    //     if (name.trim().length < 2) {
-    //         setErrorMessage("Name must be at least 2 characters long");
-    //         return false;
-    //     }
-
-    //     if (password.length < 6) {
-    //         setErrorMessage("Password must be at least 6 characters long");
-    //         return false;
-    //     }
-
-    //     if (password !== confirmPassword) {
-    //         setErrorMessage("Passwords do not match");
-    //         return false;
-    //     }
-
-    //     if (!agreedToTerms) {
-    //         setErrorMessage("Please agree to the Terms and Conditions");
-    //         return false;
-    //     }
-
-    //     return true;
-    // };
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     setErrorMessage("");
-
-    //     if (!validateForm()) {
-    //         return;
-    //     }
-
-    //     try {
-    //         setIsSubmitting(true);
-
-    //         // Remove confirmPassword before sending to API
-    //         const { confirmPassword, ...userData } = formData;
-    //         const result = await register(userData);
-
-    //         if (result.success) {
-    //             // Redirect to home page after successful registration
-    //             navigate("/");
-    //         } else {
-    //             setErrorMessage(result.error || "Registration failed. Please try again.");
-    //         }
-    //     } catch (error) {
-    //         setErrorMessage("An unexpected error occurred. Please try again.");
-    //     } finally {
-    //         setIsSubmitting(false);
-    //     }
-    // };
+   
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -94,6 +14,7 @@ const SignUp = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const {register}=useAuth();
+    const navigate= useNavigate();
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
@@ -104,9 +25,9 @@ const SignUp = () => {
     }
     const validationForm = () => {
          const {name , email, password,confirmPassword}=formData;
-        if (!formData.name || !formData.email || !formData.password) {
+        if (!name || !email || !password) {
             setErrorMessage("Please Provide all detail");
-            return flase;
+            return false;
         }
         if (name.trim().length < 2) {
             setErrorMessage("Name must be atleast 2 character long");
@@ -116,6 +37,11 @@ const SignUp = () => {
             setErrorMessage('Password must be atleast 6 character long');
             return false;
         }
+        if (password !== confirmPassword) {
+        setErrorMessage("Passwords do not match");
+        return false;
+        }
+
 
         if (!agreedToTerms) {
             setErrorMessage("Please agree to the Terms and Conditions");
@@ -127,26 +53,29 @@ const SignUp = () => {
     const handleSubmit=async(e)=>{
         e.preventDefault();
         setErrorMessage("");
+        
         if (!validationForm()) {
             return;
         }
+        
+        setIsSubmitting(true);
         try {
-            const {confirmPassword,...userData}=formData;
+            const {confirmPassword, ...userData}=formData;
             const result = await register(userData);
             if(result.success){
-                Navigate('/');
+                navigate('/');
             }else{
                 setErrorMessage(result.error || "Registration failed. Please try again.");
             }
         } catch (error) {
-            console.error("An unexpected error occurred. Please try again.");
+            setErrorMessage("An unexpected error occurred. Please try again.");
         }finally{
             setIsSubmitting(false);
         }
 
     }
 
-    cons
+  
 
     return (
         <div className="min-h-screen bg-linear-to-br from-orange-100 via-orange-50 to-white flex items-center justify-center px-4 py-20">

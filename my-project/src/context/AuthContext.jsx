@@ -1,9 +1,9 @@
 import authAPI from "../services/authService";
-const { createContext, useContext, useState, useEffect } = require("react");
+import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext(null);
-export const AuthProvider = ({ childern }) => {
+export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [error, isError] = useState(false);
     useEffect(() => {
         const initializeAuth = () => {
@@ -20,38 +20,43 @@ export const AuthProvider = ({ childern }) => {
             } finally {
                 setLoading(false);
             }
-            initializeAuth();
+            
 
         }
-
+      initializeAuth();
 
     }, []);
     const register = async (userData) => {
         try {
             setLoading(true);
-            isError(null)
-            if (resposne.success) {
-                const resposne = await authAPI.register(userData);
-                const { token, ...userInfo } = resposne.body;
+            isError(null);
+            const response = await authAPI.register(userData);
+            
+            if (response.success) {
+                const { token, id, name, email, role } = response.data;
+                const userInfo = { id, name, email, role };
                 localStorage.setItem('token', token);
-                localStorage.setItem('user', JSON.stringify(userInfo))
+                localStorage.setItem('user', JSON.stringify(userInfo));
                 setUser(userInfo);
-                return { success: true }
+                return { success: true };
+            } else {
+                const errorMessage = response.message || 'Registration failed';
+                isError(errorMessage);
+                return { success: false, error: errorMessage };
             }
         } catch (error) {
-            const errorMessage = error.errorMessage || 'Registration failed';
+            const errorMessage = error.message || 'Registration failed';
             isError(errorMessage);
             return { success: false, error: errorMessage };
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-
     }
     const login = async (userData) => {
         try {
             setLoading(true);
             isError(null);
-            const response = authAPI.login(userData);
+            const response = await authAPI.login(userData);
             if (response.success) {
                 const { token, _id, name, email, role } = response;
                 const userInfo = {
@@ -81,7 +86,7 @@ export const AuthProvider = ({ childern }) => {
                 await authAPI.logout(token)
             }
         } catch (error) {
-            console, error('Logout error', error);
+            console.error('Logout error', error);
         } finally {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
@@ -111,7 +116,7 @@ export const AuthProvider = ({ childern }) => {
         isAuthenticated,
         isError
     }
-    return <AuthContext.Provider value={value}>{childern}</AuthContext.Provider>
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 };
 // Custom hook to use auth context
 export const useAuth = () => {
@@ -121,4 +126,4 @@ export const useAuth = () => {
     }
     return context;
 }
-module.exports = AuthContext;
+export default AuthContext;
