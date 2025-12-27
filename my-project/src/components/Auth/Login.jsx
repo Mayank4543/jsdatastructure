@@ -3,55 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
-    // const [formData, setFormData] = useState({
-    //     email: "",
-    //     password: ""
-    // });
-    // const [rememberMe, setRememberMe] = useState(false);
-    // const [isSubmitting, setIsSubmitting] = useState(false);
-    // const [errorMessage, setErrorMessage] = useState("");
 
-    // const { login } = useAuth();
-    // const navigate = useNavigate();
-
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData(prev => ({
-    //         ...prev,
-    //         [name]: value
-    //     }));
-    //     // Clear error when user starts typing
-    //     if (errorMessage) setErrorMessage("");
-    // };
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     setErrorMessage("");
-
-    //     // Client-side validation
-    //     if (!formData.email || !formData.password) {
-    //         setErrorMessage("Please fill in all fields");
-    //         return;
-    //     }
-
-    //     try {
-    //         setIsSubmitting(true);
-    //         const result = await login(formData);
-
-    //         if (result.success) {
-    //             // Redirect to home page after successful login
-    //             navigate("/");
-    //         } else {
-    //             setErrorMessage(result.error || "Login failed. Please try again.");
-    //         }
-    //     } catch (error) {
-    //         setErrorMessage("An unexpected error occurred. Please try again.");
-    //     } finally {
-    //         setIsSubmitting(false);
-    //     }
-    // };
+    
     const [formData,setFormData]=useState({
-       
         email:"",
         password:""
     })
@@ -66,7 +20,7 @@ const Login = () => {
             ...prev,
             [name]:value
         }))
-            // Clear error when user starts typing
+           
         if (errorMessage) setErrorMessage("");
     }
     const handleSubmit=async(e)=>{

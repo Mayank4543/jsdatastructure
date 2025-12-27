@@ -1,60 +1,45 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { getAllBlogs } from "../services/blogService";
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedCategory, setSelectedCategory] = useState("All");
+    const [error, setError] = useState("");
     const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
 
     const categories = ["All", "Technology", "Programming", "Web Development", "Mobile Development", "Data Science", "AI & Machine Learning", "DevOps", "Design"];
 
-    // Temporary demo blogs
-    const demoBlogs = [
-        {
-            id: 1,
-            title: "Getting Started with React Hooks",
-            description: "Learn how to use React Hooks to manage state and side effects in your functional components.",
-            content: "React Hooks have revolutionized the way we write React components...",
-            category: "Programming",
-            tags: ["React", "JavaScript", "Hooks"],
-            author: { name: "John Doe" },
-            imageUrl: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=500",
-            createdAt: "2025-12-15"
-        },
-        {
-            id: 2,
-            title: "Understanding MongoDB Aggregation",
-            description: "Deep dive into MongoDB aggregation pipelines and how to use them effectively.",
-            content: "MongoDB aggregation framework is a powerful tool...",
-            category: "Data Science",
-            tags: ["MongoDB", "Database", "NoSQL"],
-            author: { name: "Jane Smith" },
-            imageUrl: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=500",
-            createdAt: "2025-12-14"
-        },
-        {
-            id: 3,
-            title: "Building RESTful APIs with Express",
-            description: "A comprehensive guide to creating robust and scalable REST APIs using Express.js.",
-            content: "Express.js is a minimal and flexible Node.js web application framework...",
-            category: "Web Development",
-            tags: ["Express", "Node.js", "API"],
-            author: { name: "Mike Johnson" },
-            imageUrl: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=500",
-            createdAt: "2025-12-13"
-        }
-    ];
-
     useEffect(() => {
-        // TODO: Fetch blogs from API
-        setTimeout(() => {
-            setBlogs(demoBlogs);
+        fetchBlogs();
+    }, [selectedCategory]);
+
+    const fetchBlogs = async () => {
+        try {
+            setLoading(true);
+            setError("");
+            
+            const filters = {
+                category: selectedCategory
+            };
+            
+            const response = await getAllBlogs(filters);
+            
+            if (response.success) {
+                setBlogs(response.data);
+            } else {
+                setError(response.message || "Failed to fetch blogs");
+            }
+        } catch (err) {
+            setError(err.message || "Failed to fetch blogs");
+            console.error("Fetch blogs error:", err);
+        } finally {
             setLoading(false);
-        }, 500);
-    }, []);
+        }
+    };
 
     const filteredBlogs = selectedCategory === "All" 
         ? blogs 
@@ -71,6 +56,24 @@ const Blogs = () => {
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-500 mx-auto"></div>
                     <p className="mt-4 text-gray-600 font-semibold">Loading blogs...</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="min-h-screen bg-linear-to-br from-orange-50 to-white flex items-center justify-center">
+                <div className="text-center bg-white p-8 rounded-xl shadow-lg max-w-md">
+                    <div className="text-red-500 text-5xl mb-4">⚠️</div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">Error Loading Blogs</h3>
+                    <p className="text-gray-600 mb-6">{error}</p>
+                    <button
+                        onClick={fetchBlogs}
+                        className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition"
+                    >
+                        Try Again
+                    </button>
                 </div>
             </div>
         );
@@ -139,7 +142,7 @@ const Blogs = () => {
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filteredBlogs.map(blog => (
                             <div
-                                key={blog.id}
+                                key={blog._id}
                                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
                             >
                                 {/* Image */}
@@ -201,7 +204,7 @@ const Blogs = () => {
                                             </div>
                                         </div>
                                         <Link
-                                            to={`/blog/${blog.id}`}
+                                            to={`/blog/${blog._id}`}
                                             className="text-blue-500 hover:text-blue-600 font-semibold text-sm"
                                         >
                                             Read more →

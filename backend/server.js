@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import authRoutes from './routes/auth.js';
+import blogRoutes from './routes/blog.js';
 import connectDB from './config/db.js';
 
 dotenv.config();
@@ -23,6 +24,9 @@ app.get("/", (req, res) => {
 
 //  Use Auth Routes
 app.use('/api/auth', authRoutes);
+
+//  Use Blog Routes
+app.use('/api/blogs', blogRoutes);
 
 // Global Error Handler
 app.use((err, req, res, next) => {

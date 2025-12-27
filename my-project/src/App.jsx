@@ -11,6 +11,7 @@ import Blogs from './pages/Blogs.jsx';
 import CreateBlog from './components/Blog/CreateBlog.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
+
 function AppContent() {
   const location = useLocation();
   const isAuthPage = location.pathname === '/login' || location.pathname === '/signup';

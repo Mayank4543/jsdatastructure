@@ -83,7 +83,7 @@ const SignUp = () => {
 
                 {/* Header */}
                 <div className="text-center">
-                    <h2 className="text-4xl font-extrabold text-gray-800 mb-2">Create Account</h2>
+                    <h2 className="text-4xl font-extrabold  text-gray-800 mb-2">Create Account</h2>
                     <p className="text-gray-600">Join us and start your learning journey</p>
                 </div>
 
